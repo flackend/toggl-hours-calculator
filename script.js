@@ -6,7 +6,15 @@
     $(".task input:checked").each(function () {
 
         // Get Duration
-        var durationStr = $(this).parent().find(".duration").text();
+        var durationStr;
+        switch(window.location.pathname) {
+            case '/report/show':
+                durationStr = $(this).parent().parent().find(".minutes").text();
+                break;
+            case '/track':
+                durationStr = $(this).parent().find(".duration").text();
+                break;
+        }
         var duration = durationStr.split(":");
         // Parse duration
         var hours = 0;
