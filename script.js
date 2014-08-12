@@ -1,18 +1,15 @@
-;(function () {
+;(function (window, document, $, undefined) {
 
     "use strict";
 
     var totalHours = 0;
-    $(".task input:checked").each(function () {
+    $(".entry input:checked").each(function () {
 
         // Get Duration
         var durationStr;
         switch(window.location.pathname) {
-            case '/report/show':
-                durationStr = $(this).parent().parent().find(".minutes").text();
-                break;
-            case '/track':
-                durationStr = $(this).parent().find(".duration").text();
+            case '/app/timer':
+                durationStr = $(this).parent().parent().parent().find(".duration").text();
                 break;
         }
         var duration = durationStr.split(":");
@@ -32,4 +29,4 @@
     // value to their clipboard)
     var foo = prompt("Total hours of checked items:", totalHours);
 
-})();
+})(this, this.document, jQuery);
